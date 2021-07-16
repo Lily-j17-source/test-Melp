@@ -13,11 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from melpapi.views import CreateRestaurantAPIView, DestroyRestaurantsAPIView, ListRestaurantsAPIView, UpdateRestaurantAPIView
 from django.contrib import admin
-from django.urls import path, include
-from .router import router
+from django.urls import path 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/',include(router.urls))
+    path('restaurant/list/',ListRestaurantsAPIView.as_view(), name='list-restaurants'),
+    path('restaurant/create/',CreateRestaurantAPIView.as_view(),name='create-restaurant'),
+    path('restaurant/<str:pk>/update/',UpdateRestaurantAPIView.as_view(),name="update-restaurant"),
+    path('restaurant/<str:pk>/destroy/',DestroyRestaurantsAPIView.as_view(),name="delete-restaurant")
+    #path('api/',include(router.urls))
 ]

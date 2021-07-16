@@ -20,6 +20,7 @@ class Restaurant(models.Model):
    def __str__(self):
        return f"{self.id}, {self.ratin},{self.name},{self.site},{self.email},{self.phone},{self.street},{self.city},{self.state},{self.lat},{self.lng}"
 
+
    #CRUD
    #CREATE / INSERT / ADD - GET
    #RETRIEVE / FETCH - GET
